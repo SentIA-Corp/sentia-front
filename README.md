@@ -1,8 +1,42 @@
+# 🧠 SentIA – Frontend
+
+Sistema de recopilació i gestió de valoracions amb resposta automàtica mitjançant IA.
+
+Aquest és el repositori del frontend, desenvolupat amb Next.js 13+, React, TypeScript i TailwindCSS.
+L’objectiu del projecte és permetre que un usuari introdueixi una valoració, i que el sistema generi automàticament una resposta utilitzant IA. També inclou una pàgina d’administració/desplegament de reviews en format targetes.
+
+### 🚀 Tecnologies utilitzades
+
+- Next.js 13+ (App Router)
+- React 18
+- TypeScript
+- TailwindCSS
+- Framer Motion (animacions)
+- Lucide Icons (icones del projecte)
+- API interna per gestionar enviaments del formulari
+
+Integració amb IA per generar resposta automàtica a cada comentari
+
+### 📂 Estructura principal del projecte
+```bash 
+src/
+  app/
+    page.tsx               → pàgina principal del formulari
+    reviews/page.tsx       → visualització de valoracions (targetes)
+    lopd/page.tsx          → política de privacitat
+    api/
+      review/route.ts      → endpoint que gestiona l’enviament del formulari i genera resposta
+  components/
+    Form.tsx               → formulari de valoracions
+    ReviewCard.tsx         → targeta de visualització
+    UI/*                   → components visuals reutilitzables
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+```
 
-First, run the development server:
+### 🛠 Getting Started
+
+Instal·la les dependències:
 
 ```bash
 npm run dev
@@ -14,23 +48,39 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Executa el servidor de desenvolupament:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Obre el navegador a 👉 http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔐 Política de privacitat (LOPD)
 
-## Learn More
+El projecte inclou una pàgina completa a /lopd amb el contingut legal sobre:
 
-To learn more about Next.js, take a look at the following resources:
+- Responsable del tractament
+- Dades recopilades
+- Finalitat
+- Base legal
+- Conservació
+- Drets dels usuaris
+- Cookies
+- Seguretat
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🧪 Com contribuir
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Les pull requests són benvingudes.
+Si vols proposar noves funcionalitats o millores, obre un issue.
 
-## Deploy on Vercel
+### 🚀 Desplegament
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El projecte està pensat per desplegar-se fàcilment a Vercel, plataforma oficial de Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Documentació:
+https://nextjs.org/docs/app/building-your-application/deploying
+
+## 📄 Llicència
+
+Aquest projecte és propietat de SentIA.
+Ús privat restringit.
