@@ -1,15 +1,13 @@
 import Footer from "@/components/footer";
-import TeamCard from "@/components/team";
 
 export default function Lopd() {
-    
   return (
     <>
         <div className="font-sans grid items-center justify-items-center p-8 pb-20 gap-16 pt-30 bg-gray-200">
           <p className="text-2xl font-bold tracking-[1.5px]">Política de privacitat i avís legal</p>
         </div>
         <div className="font-sans grid items-center justify-items-center -mt-10 pb-10 gap-16 px-4">
-           <div className="w-full max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-lg">
+           <div className="w-full max-w-4xl mx-auto p-8 bg-white rounded-2xl shadow-lg">
               <div className="flex flex-col gap-2 my-2 text-gray-700">
                 <h2 className="font-semibold">1. Responsable del tractament</h2>
                 <p>
@@ -35,10 +33,10 @@ export default function Lopd() {
 
               <div className="flex flex-col gap-2 my-2 text-gray-700">
                 <h2 className="font-semibold">3. Finalitat del tractament</h2>
-                <p>Les dades proporcionades s'utilitzen exclusivament per:</p>
+                <p>Les dades proporcionades s&apos;utilitzen exclusivament per:</p>
                 <ul>
                     <li>Gestionar i publicar valoracions d&apos;usuaris</li>
-                    <li>Generar una resposta automatitzada a través d'intel·ligència artificial</li>
+                    <li>Generar una resposta automatitzada a través d&apos;intel·ligència artificial</li>
                     <li>Millorar el servei i experiència dels usuaris</li>
                 </ul>
                 <p>No es faran servir amb finalitats comercials ni publicitàries.</p>
