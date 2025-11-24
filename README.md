@@ -36,6 +36,12 @@ src/
 
 ### 🛠 Getting Started
 
+Crea les variables d'entorn:
+
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
 Instal·la les dependències:
 
 ```bash
