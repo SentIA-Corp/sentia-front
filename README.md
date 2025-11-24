@@ -24,14 +24,14 @@ src/
     page.tsx               → pàgina principal del formulari
     reviews/page.tsx       → visualització de valoracions (targetes)
     lopd/page.tsx          → política de privacitat
-    api/
-      review/route.ts      → endpoint que gestiona l’enviament del formulari i genera resposta
   components/
-    Form.tsx               → formulari de valoracions
-    ReviewCard.tsx         → targeta de visualització
+    forms/form.tsx         → formulari de valoracions
+    review.tsx             → targeta de visualització de les opinions
+    header.tsx             → header principal de la web
+    teams.tsx              → targeta de visualització del equip
     UI/*                   → components visuals reutilitzables
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
+  utils/
+    api.tsx                → controlador de peticions al backend (FastAPI)
 ```
 
 ### 🛠 Getting Started
