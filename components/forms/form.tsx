@@ -4,53 +4,48 @@ import { Star } from "lucide-react";
 import { sendOpinion } from "@/lib/api";
 import { motion, AnimatePresence } from "framer-motion";
 import Spinner from "@/components/spinner";
+import { useForm } from "react-hook-form";
+import { ReviewFormData } from "@/lib/types";
 
 export default function ReviewForm() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const [status, setStatus] = useState("idle");
-
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [comment, setComment] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [accepted, setAccepted] = useState(false);
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setStatus("loading");
-    
-    const formData = {
-      name: name,
-      lastname: lastname,
-      email: email,
-      phone: phone,
-      rating: rating,
-      comment: comment,
-    };
+  const { register, handleSubmit, reset } = useForm<ReviewFormData>();
 
+  const onSubmit = async (data: ReviewFormData) => {
+    setStatus("loading");
+    const formData = {
+      ...data,
+      rating,
+    };
     try {
       await sendOpinion(formData);
       setStatus("success");
+      reset();
+      setRating(0);
+      setAccepted(false);
     } catch (error) {
-      console.error("Error enviando la opinión:", error);
       setStatus("error");
     }
   };
 
   const resetForm = () => {
     setStatus("idle");
+    reset();
     setRating(0);
-    setName("");
-    setLastname("");
-    setEmail("");
-    setPhone("");
-    setComment("");
+    setAccepted(false);
   };
 
   return (
     <div className="w-full max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-lg -mt-30">
+      {status === "loading" && (
+        <div className="flex justify-center items-center h-40">
+          <Spinner />
+        </div>
+      )}
       <AnimatePresence>
         {status === "success" && (
           <motion.div
@@ -91,8 +86,8 @@ export default function ReviewForm() {
         )}
       </AnimatePresence>
 
-      {status === "idle" && (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+     {status === "idle" && (
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <div className="text-center">
             <h2 className="text-xl font-semibold">Realitza ara una valoració sobre el nostre servei</h2>
             <p className="text-gray-600">Emplena el següent formulari, i et respondrem al moment!</p>
@@ -104,48 +99,36 @@ export default function ReviewForm() {
               type="text"
               className="border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
               placeholder="Indica el teu nom"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
+              {...register("name", { required: true })}
             />
           </div>
-
           <div className="flex flex-col gap-2">
             <label className="font-medium">Cognoms</label>
             <input
               type="text"
               className="border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
               placeholder="Indica els teus cognoms"
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
-              required
+              {...register("lastname", { required: true })}
             />
           </div>
-
           <div className="flex flex-col gap-2">
             <label className="font-medium">Email</label>
             <input
               type="email"
               className="border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
               placeholder="Indica el teu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              {...register("email", { required: true })}
             />
           </div>
-
           <div className="flex flex-col gap-2">
             <label className="font-medium">Telèfon</label>
             <input
               type="text"
               className="border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
               placeholder="Indica el teu número de telèfon"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
+              {...register("phone", { required: true })}
             />
           </div>
-
           <div className="flex flex-col gap-2">
             <label className="font-medium">Valoració</label>
             <div className="flex gap-2 mt-1">
@@ -164,18 +147,14 @@ export default function ReviewForm() {
               ))}
             </div>
           </div>
-
           <div className="flex flex-col gap-2">
             <label className="font-medium">Comentaris</label>
             <textarea
               className="border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 h-28"
               placeholder="Escriu la teva opinió..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              required
+              {...register("comment", { required: true })}
             />
           </div>
-
           <div className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -188,19 +167,14 @@ export default function ReviewForm() {
               He llegit i accepto el tractament de les meves dades personals segons la <a href="/lopd" target="_blank" className="underline text-blue-600">Política de Privacitat</a>
             </label>
           </div>
-
           <button
             type="submit"
-            className="bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition disabled:opacity-50 flex items-center justify-center gap-2"
-            disabled={status === "loading"}
+            className={`py-2 rounded-lg transition flex items-center justify-center gap-2 text-white font-bold
+              ${!accepted ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:bg-gray-800"}
+            `}
+            disabled={!accepted}
           >
-            {status === "loading" ? (
-              <>
-                <Spinner />
-              </>
-            ) : (
-              "Enviar"
-            )}
+            Enviar
           </button>
         </form>
       )}

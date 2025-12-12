@@ -1,6 +1,8 @@
+import { ReviewFormData } from "./types";
+
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-export async function sendOpinion(data: any) {
+export async function sendOpinion(data: ReviewFormData) {
   const res = await fetch(`${API_URL}/analyze`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
