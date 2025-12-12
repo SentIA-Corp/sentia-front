@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Star } from "lucide-react";
 import { sendOpinion } from "@/lib/api";
 import { motion, AnimatePresence } from "framer-motion";
+import Spinner from "@/components/spinner";
 
 export default function ReviewForm() {
   const [rating, setRating] = useState(0);
@@ -190,10 +191,16 @@ export default function ReviewForm() {
 
           <button
             type="submit"
-            className="bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition disabled:opacity-50"
+            className="bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition disabled:opacity-50 flex items-center justify-center gap-2"
             disabled={status === "loading"}
           >
-            {status === "loading" ? "Enviant..." : "Enviar"}
+            {status === "loading" ? (
+              <>
+                <Spinner />
+              </>
+            ) : (
+              "Enviar"
+            )}
           </button>
         </form>
       )}

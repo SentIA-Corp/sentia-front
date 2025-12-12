@@ -1,5 +1,7 @@
+"use client";
 import Footer from "@/components/footer";
 import ReviewForm from "@/components/forms/form";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -7,13 +9,19 @@ export default function Home() {
       <div className="font-sans grid items-center justify-items-center p-8 pb-20 gap-16 pt-30 bg-gray-200 ">
         <p className="text-2xl font-bold tracking-[1.5px] text-center">
           La teva empresa de conf
-          <a className="text-sky-500 font-bold uppercase">ia</a>
+          <a className="text-sky-500 font-bold uppercase">ia</a>nça
           <br />
           per a valoracions reals i transparents.
         </p>
       </div>
       <div className="font-sans grid items-center justify-items-center pb-20 gap-16 mt-20">
-        <ReviewForm />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <ReviewForm />
+        </motion.div>
       </div>
       <Footer />
     </>

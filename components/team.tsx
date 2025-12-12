@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function TeamCard() {
 
   const team = [
-    { name: "Edgar Sánchez", role: "Frontend Dev", photo: "/team/edgar.jpg" },
-    { name: "Ruben Pabo", role: "Backend Dev", photo: "/team/ruben.jpg" },
-    { name: "Joel Hoyos", role: "Database Admin", photo: "/team/joel.jpg" },
+    { name: "Edgar Sánchez", role: "Frontend Dev", photo: "/team/edgarsanchez.jpg" },
+    { name: "Ruben Pabo", role: "Backend Dev", photo: "/team/rubenpabo.jpg" },
+    { name: "Joel Hoyos", role: "Database Admin", photo: "/team/joelhoyos.jpg" },
   ];
 
   return (

@@ -14,7 +14,7 @@ export default function Lopd() {
                     El responsable del tractament de les dades és <strong>SentIA</strong>, empresa dedicada a la gestió i recopilació de valoracions.
                 </p>
                 <p>
-                    Correu de contacte: <a className="text-blue-500 hover:underline" href="mailto:info@sentia.com">info@sentia.com</a>
+                    Correu de contacte: <a className="text-blue-500 hover:underline" href="mailto:sentia.information@gmail.com">sentia.information@gmail.com</a>
                 </p>
               </div>
 
@@ -77,7 +77,7 @@ export default function Lopd() {
                     <li>· Limitació del tractament</li>
                     <li>· Portabilitat de les dades</li>
                 </ul>
-                <p>Mitjançant correu a <a className="text-blue-500 hover:underline" href="mailto:info@sentia.com">info@sentia.com</a></p>
+                <p>Mitjançant correu a <a className="text-blue-500 hover:underline" href="mailto:sentia.information@gmail.com">sentia.information@gmail.com</a></p>
               </div>
 
               <div className="flex flex-col gap-2 my-2 text-gray-700">
